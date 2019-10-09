@@ -32,7 +32,7 @@ void deallocate(T *&ptr)
   }
 }
 
-int main(int argc, char *argv[])
+int main(int RAJA_UNUSED_ARG(argc), char** RAJA_UNUSED_ARG(argv[]))
 {
 #if defined(RAJA_ENABLE_CUDA)
   using policy = RAJA::cuda_exec<256>;
