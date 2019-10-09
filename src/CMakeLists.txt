@@ -7,6 +7,12 @@
 
 set(example_depends RAJA)
 
+if (ENABLE_OPENMP)
+  set(example_depends 
+    ${example_depends}
+    openmp)
+endif ()
+
 if (ENABLE_CUDA)
   set(example_depends 
     ${example_depends}

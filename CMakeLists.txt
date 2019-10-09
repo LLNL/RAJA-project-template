@@ -16,7 +16,19 @@ set (ENABLE_DOCUMENTATION Off CACHE BOOL "")
 set (ENABLE_BENCHMARKS Off CACHE BOOL "")
 
 include(blt/SetupBLT.cmake)
-add_subdirectory(tpl/raja)
+
+
+if (DEFINED RAJA_DIR)
+  find_package(camp REQUIRED)
+  find_package(RAJA REQUIRED)
+
+  blt_register_library(
+    NAME RAJA
+    INCLUDES ${RAJA_INCLUDE_DIRS}
+    LIBRARIES RAJA)
+else ()
+  add_subdirectory(tpl/raja)
+endif ()
 
 if (ENABLE_CUDA)
   set (CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-extended-lambda")

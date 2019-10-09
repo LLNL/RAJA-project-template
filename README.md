@@ -30,6 +30,24 @@ To experiment with writing your own RAJA application, you can modify the file
 `./src/example.cpp`, and rebuild the code by running `make` in the `build`
 directory you created earlier.
 
+## Using an Installed Version of RAJA
+
+This project can also be configured using a pre-installed version of RAJA. This
+is the reccomended method for using RAJA in a large application. Please see the
+[RAJA documentation]() for details on building and installing RAJA
+
+Onec you have RAJA installed, configure the project and set the CMake option
+`RAJA_DIR` and `camp_DIR`:
+
+    cmake -DRAJA_DIR=/path/to/raja/share/raja/cmake -Dcamp_DIR=/path/to/raja/lib/cmake/camp ../
+
+Then build as before:
+
+    make
+
+If you are building this way, it's important to make sure that the options you
+build this project with match the options used to build the installed RAJA.
+
 ## Next Steps
 
 - For more information on RAJA, check out the RAJA
