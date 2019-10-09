@@ -1,0 +1,21 @@
+###############################################################################
+# Copyright (c) 2016-19, Lawrence Livermore National Security, LLC
+# and RAJA project contributors. See the RAJA/COPYRIGHT file for details.
+#
+# SPDX-License-Identifier: (BSD-3-Clause)
+###############################################################################
+cmake_minimum_required(VERSION 3.8)
+
+project( raja-example )
+
+set (ENABLE_TESTS Off CACHE BOOL "")
+set (ENABLE_EXAMPLES Off CACHE BOOL "")
+set (ENABLE_REPRODUCERS Off CACHE BOOL "")
+set (ENABLE_EXERCISES Off CACHE BOOL "")
+set (ENABLE_DOCUMENTATION Off CACHE BOOL "")
+set (ENABLE_BENCHMARKS Off CACHE BOOL "")
+
+include(blt/SetupBLT.cmake)
+add_subdirectory(tpl/raja)
+
+add_subdirectory(src)
