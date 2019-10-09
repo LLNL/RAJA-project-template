@@ -21,10 +21,10 @@ the project:
 
 This will create the binary `example.exe` in the `./bin` directory.
 
-The following options can be passed to CMake to enable additional RAJA backends:
+The following options can be passed to CMake to enable additional RAJA back-ends:
 
-- `ENABLE_OPENMP` will enable the OpenMP backend (default: `On`)
-- `ENABLE_CUDA` will enable the CUDA backend (default: `Off`)
+- `ENABLE_OPENMP` will enable the OpenMP back-end (default: `On`)
+- `ENABLE_CUDA` will enable the CUDA back-end (default: `Off`)
 
 To experiment with writing your own RAJA application, you can modify the file
 `./src/example.cpp`, and rebuild the code by running `make` in the `build`
@@ -33,10 +33,10 @@ directory you created earlier.
 ## Using an Installed Version of RAJA
 
 This project can also be configured using a pre-installed version of RAJA. This
-is the reccomended method for using RAJA in a large application. Please see the
+is the recommended method for using RAJA in a large application. Please see the
 [RAJA documentation]() for details on building and installing RAJA
 
-Onec you have RAJA installed, configure the project and set the CMake option
+Once you have RAJA installed, configure the project and set the CMake option
 `RAJA_DIR` and `camp_DIR`:
 
     cmake -DRAJA_DIR=/path/to/raja/share/raja/cmake -Dcamp_DIR=/path/to/raja/lib/cmake/camp ../
@@ -55,7 +55,7 @@ build this project with match the options used to build the installed RAJA.
 - For more information on using BLT and CMake, check out the BLT
   [tutorial](https://llnl-blt.readthedocs.io/en/develop)
 
-If you have qeustions, comments or ideas, please join the RAJA mailing list on
+If you have questions, comments or ideas, please join the RAJA mailing list on
 Google Groups [here](https://groups.google.com/forum/#!forum/raja-users).
 
 ## License
