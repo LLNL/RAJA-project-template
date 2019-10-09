@@ -34,14 +34,18 @@ void deallocate(T *&ptr)
 
 int main(int argc, char *argv[])
 {
-
 #if defined(RAJA_ENABLE_CUDA)
   using policy = RAJA::cuda_exec;
+  const std::string policy_name = "CUDA";
 #elif defined(RAJA_ENABLE_OPENMP)
   using policy = RAJA::omp_parallel_for_exec;
+  const std::string policy_name = "OpenMP";
 #else
   using policy = RAJA::seq_exec;
+  const std::string policy_name = "sequential";
 #endif
+
+  std::cout << "Running vector addition with RAJA using the " << policy_name << " backend...";
 
   constexpr int N = 1000000;
 
@@ -49,14 +53,16 @@ int main(int argc, char *argv[])
   int *b = allocate<int>(N);
   int *c = allocate<int>(N);
 
-  for (int i = 0; i < N; ++i) {
+  RAJA::forall<policy>(RAJA::RangeSegment(0, N), [=] RAJA_HOST_DEVICE (int i) { 
     a[i] = -i;
     b[i] = i;
-  }
+  });
 
   RAJA::forall<policy>(RAJA::RangeSegment(0, N), [=] RAJA_HOST_DEVICE (int i) { 
     c[i] = a[i] + b[i]; 
   });
+
+  std::cout << "done." << std::endl;
 
   deallocate(a);
   deallocate(b);
