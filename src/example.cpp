@@ -35,7 +35,7 @@ void deallocate(T *&ptr)
 int main(int argc, char *argv[])
 {
 #if defined(RAJA_ENABLE_CUDA)
-  using policy = RAJA::cuda_exec;
+  using policy = RAJA::cuda_exec<256>;
   const std::string policy_name = "CUDA";
 #elif defined(RAJA_ENABLE_OPENMP)
   using policy = RAJA::omp_parallel_for_exec;

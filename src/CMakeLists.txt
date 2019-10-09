@@ -4,7 +4,16 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 ###############################################################################
+
+set(example_depends RAJA)
+
+if (ENABLE_CUDA)
+  set(example_depends 
+    ${example_depends}
+    cuda)
+endif ()
+
 blt_add_executable(
   NAME example.exe
   SOURCES example.cpp
-  DEPENDS_ON RAJA)
+  DEPENDS_ON ${example_depends})

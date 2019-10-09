@@ -18,4 +18,8 @@ set (ENABLE_BENCHMARKS Off CACHE BOOL "")
 include(blt/SetupBLT.cmake)
 add_subdirectory(tpl/raja)
 
+if (ENABLE_CUDA)
+  set (CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-extended-lambda")
+endif ()
+
 add_subdirectory(src)
