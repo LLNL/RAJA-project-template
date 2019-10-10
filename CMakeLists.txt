@@ -17,15 +17,9 @@ set (ENABLE_BENCHMARKS Off CACHE BOOL "")
 
 include(blt/SetupBLT.cmake)
 
-
 if (DEFINED RAJA_DIR)
-  find_package(camp REQUIRED)
   find_package(RAJA REQUIRED)
-
-  blt_register_library(
-    NAME RAJA
-    INCLUDES ${RAJA_INCLUDE_DIRS}
-    LIBRARIES RAJA)
+  blt_print_target_properties(TARGET RAJA)
 else ()
   add_subdirectory(tpl/raja)
 endif ()
