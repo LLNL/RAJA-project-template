@@ -37,11 +37,9 @@ is the recommended method for using RAJA in a large application. Please see the
 [RAJA documentation]() for details on building and installing RAJA
 
 Once you have RAJA installed, configure the project and set the CMake option
-`RAJA_DIR` and `camp_DIR`:
+`RAJA_DIR`:
 
-    cmake -DRAJA_DIR=<path to RAJA install directory>/share/raja/cmake \
-          -Dcamp_DIR=<path to RAJA install directory>/lib/cmake/camp \
-          ../
+    cmake -DRAJA_DIR=<path to RAJA install directory>/share/raja/cmake ../
 
 Then build as before:
 
