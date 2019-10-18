@@ -1,7 +1,7 @@
 # RAJA Project Template
 
-This project is a template that demonstrates how to use RAJA and BLT in a CMake
-project.
+This project is a template that demonstrates how to use RAJA and BLT in an
+application project that uses CMake.
 
 ## Quick Start
 
@@ -9,35 +9,39 @@ Clone this repository, and all the submodules:
 
     git clone --recursive https://github.com/llnl/raja-project-template
 
-Configure using CMake:
+Before we describe how to build the project, it is important to note that 
+it requires out-of-source builds.
+
+To configure and build this project using a default compiler on your system,
+first create a build subdirectory in the top-level directory of this repo and 
+then run CMake and make:
 
     mkdir build && cd build
     cmake ../
-
-Note that this project requires out-of-source builds. Finally, you can build
-the project:
-
     make
 
-This will create the binary `example.exe` in the `./bin` directory.
+This will create the binary `example.exe` in the `./bin` directory. 
 
-The following options can be passed to CMake to enable additional RAJA back-ends:
+When you run the executable, you will see that it runs a sequential CPU kernel.
+You can also run an OpenMP multithreaded CPU kernel or a CUDA GPU kernel by 
+enabling those features when you run CMake, specifically, passing the following
+options to CMake:
 
-- `ENABLE_OPENMP` will enable the OpenMP back-end (default: `On`)
-- `ENABLE_CUDA` will enable the CUDA back-end (default: `Off`)
+- `-DENABLE_OPENMP=On` will enable the OpenMP back-end (RAJA default: `On`)
+- `-DENABLE_CUDA=On` will enable the CUDA back-end (RAJA default: `Off`)
 
-To experiment with writing your own RAJA application, you can modify the file
-`./src/example.cpp`, and rebuild the code by running `make` in the `build`
-directory you created earlier.
+If you want to experiment with RAJA before trying it in your application, 
+you can modify the file `./src/example.cpp`, and rebuild the code by running 
+`make` in the `build` directory you created earlier.
 
 ## Using an Installed Version of RAJA
 
-This project can also be configured using a pre-installed version of RAJA. This
-is the recommended method for using RAJA in a large application. Please see the
-[RAJA documentation]() for details on building and installing RAJA
+This project can also be configured to use a pre-installed version of RAJA. 
+This is the recommended method for using RAJA in a large application. Please 
+see the [RAJA documentation]() for details on building and installing RAJA.
 
-Once you have RAJA installed, configure the project and set the CMake option
-`RAJA_DIR`:
+Once you have RAJA installed, configure the project by specifying the RAJA
+location using the CMake option `RAJA_DIR`:
 
     cmake -DRAJA_DIR=<path to RAJA install directory>/share/raja/cmake ../
 
@@ -46,9 +50,9 @@ Then build as before:
     make
 
 If you are building your application against an installed version of RAJA,
-it's important to make sure that the options you build this project with 
-(apart from the ones indicated above) match the options used to build the 
-installed RAJA.
+it's important to make sure that the options you passed to CMake to build
+RAJA match the options you use to build this project, apart from the one 
+indicated above.
 
 ## Next Steps
 
