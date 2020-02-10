@@ -54,6 +54,19 @@ it's important to make sure that the options you passed to CMake to build
 RAJA match the options you use to build this project, apart from the one 
 indicated above.
 
+## Using RAJA with Make
+
+To use RAJA in a project with a make-based build system, you need to add the
+`include` directory to your compile flags, and also make sure you link against
+the RAJA library. You must also ensure that you add the appropriate flags for
+any RAJA features you have enabled (e.g. `-fopenmp` or equivalent if you built
+RAJA with OpenMP enabled).
+
+As an example, here is how you could compile the example included in this
+project:
+
+  g++-9 -I /path/to/raja/install/include -L /path/to/raja/install/lib -lRAJA -std=c++11 -fopenmp example.cpp -o example
+
 ## Next Steps
 
 - For more information on RAJA, check out the RAJA
