@@ -65,35 +65,35 @@ or equivalent if you built RAJA with OpenMP enabled).
 For completeness, to compile and link the example in this project using the g++ 
 compiler, you could do the following on the command line:
 
-  g++ -I <path to RAJA install directory>/include -std=c++11 -fopenmp ./src/example.cpp -o example.exe <path to RAJA install directory>/lib/libRAJA.a
+    g++ -I <path to RAJA install directory>/include -std=c++11 -fopenmp ./src/example.cpp -o example.exe <path to RAJA install directory>/lib/libRAJA.a
 
 Since most applications contain more than one source file, you probably want
 to create a Makefile to use to build your project. Here are the contents of a
 simple Makefile that builds the example in this project:
 
-   CXX=<compiler executable>
-   CXXFLAGS=-I$(INC_DIR) -std=c++11 -fopenmp
+    CXX=<compiler executable>
+    CXXFLAGS=-I$(INC_DIR) -std=c++11 -fopenmp
 
-   INC_DIR =<path to RAJA install directory>/include
-   LIB_DIR =<path to RAJA install directory>/include/lib
+    INC_DIR =<path to RAJA install directory>/include
+    LIB_DIR =<path to RAJA install directory>/include/lib
 
-   LIBS=-lRAJA
+    LIBS=-lRAJA
 
-   SRC_DIR=./src
-   OBJ_DIR=$(SRC_DIR)
+    SRC_DIR=./src
+    OBJ_DIR=$(SRC_DIR)
 
-   OBJ = example.o
+    OBJ = example.o
 
-   $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-        $(CXX) -c -o $@ $< $(CXXFLAGS)
+    $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+         $(CXX) -c -o $@ $< $(CXXFLAGS)
 
-   example.exe: $(OBJ_DIR)/$(OBJ)
-        $(CXX) -o $@ $^ $(CXXFLAGS) -L $(LIB_DIR) $(LIBS)
+    example.exe: $(OBJ_DIR)/$(OBJ)
+         $(CXX) -o $@ $^ $(CXXFLAGS) -L $(LIB_DIR) $(LIBS)
 
-   .PHONY: clean
+    .PHONY: clean
 
-   clean:
-        rm -f $(OBJ_DIR)/*.o example.exe
+    clean:
+         rm -f $(OBJ_DIR)/*.o example.exe
 
 To try it out, you can copy these lines into a file called Makefile in the 
 top-level project directory and type 'make'. The executable `example.exe` will 
