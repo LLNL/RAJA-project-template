@@ -65,7 +65,7 @@ RAJA with OpenMP enabled).
 As an example, here is how you could compile the example included in this
 project:
 
-  g++-9 -I /path/to/raja/install/include -L /path/to/raja/install/lib -lRAJA -std=c++11 -fopenmp example.cpp -o example
+  g++-9 -I /path/to/raja/install/include -std=c++11 -fopenmp example.cpp -o example /path/to/raja/install/lib/libRAJA.a
 
 ## Next Steps
 
