@@ -53,12 +53,12 @@ int main(int RAJA_UNUSED_ARG(argc), char** RAJA_UNUSED_ARG(argv[]))
   int *b = allocate<int>(N);
   int *c = allocate<int>(N);
 
-  RAJA::forall<policy>(RAJA::RangeSegment(0, N), [=] RAJA_HOST_DEVICE (int i) { 
+  RAJA::forall<policy>(RAJA::TypedRangeSegment<int>(0, N), [=] RAJA_HOST_DEVICE (int i) { 
     a[i] = -i;
     b[i] = i;
   });
 
-  RAJA::forall<policy>(RAJA::RangeSegment(0, N), [=] RAJA_HOST_DEVICE (int i) { 
+  RAJA::forall<policy>(RAJA::TypedRangeSegment<int>(0, N), [=] RAJA_HOST_DEVICE (int i) { 
     c[i] = a[i] + b[i]; 
   });
 
